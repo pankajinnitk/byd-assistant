@@ -35,7 +35,6 @@ def webhook():
 
 
 def processRequest(req):
-	"""
 		conn = http.client.HTTPSConnection("my316075.sapbydesign.com")
 		baseurl = "/sap/byd/odata/cust/v1/purchasing/PurchaseOrderCollection/"
 		query = makeQuery(req)
@@ -55,7 +54,6 @@ def processRequest(req):
 		data = json.loads(result)
 		print("data")
 		print(data)
-		"""
 		res = makeWebhookResult(data, req)
 		return res	
 
@@ -75,7 +73,6 @@ def makeQuery(req):
         return {}
 	
 def makeWebhookResult(data, req):
-	"""
     action = req.get("result").get("action")    
     if action == "find-status":		
         d = data.get('d')
@@ -100,17 +97,14 @@ def makeWebhookResult(data, req):
 	
     print("Response:")
     print(speech)
-"""
-    return {
-        "speech": "pankaj test",
-        "displayText": "pankaj test",
-    	data:{
 
-                    },
-                    contextOut:[],
-                    source:"pankajbydassistant"
-                
-        }
+    return {
+        "speech": speech,
+        "displayText": speech,
+        # "data": data,
+        #"contextOut": "",
+        "source": "pankajbydassistant"
+    }
 
 
 if __name__ == '__main__':
