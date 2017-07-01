@@ -101,10 +101,13 @@ def makeWebhookResult(data, req):
     return {
         "speech": "pankaj test",
         "displayText": "pankaj test",
-        # "data": data,
-        #"contextOut": "",
-        "source": "pankajbydassistant"
-    }
+    	data:{
+
+                    },
+                    contextOut:[],
+                    source:"webhook"
+                
+        }
 
 
 if __name__ == '__main__':
