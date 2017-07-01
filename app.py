@@ -99,8 +99,8 @@ def makeWebhookResult(data, req):
     print(speech)
 
     return {
-        "speech": speech,
-        "displayText": speech,
+        "speech": "pankaj test",
+        "displayText": "pankaj test",
         # "data": data,
         #"contextOut": "",
         "source": "pankajbydassistant"
