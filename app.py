@@ -97,7 +97,7 @@ def makeWebhookResult(data, req):
             speech = "There are no purchase orders in the system with " + \
                       req.get("result").get("parameters").get("status") + " status"
 		
-    elif action == "trigger-action"
+    elif action == "trigger-action":
 	speech = "canceled"
 	
     else:
