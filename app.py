@@ -42,10 +42,11 @@ def processRequest(req):
 		query = makeQuery(req)
 		qry_url = baseurl + query
 		print(qry_url)
-		base64string = base64.encodestring(('%s:%s' % ("odata_demo", "Welcome01")).encode()).decode().replace('\n', '')    
+		base64string = base64.encodestring(('%s:%s' % ("odata_demo", "Welcome01")).encode()).decode().replace('\n', '')
+		csrftoken = "Svz1-5jb0YSzAuu82EtZOQ=="
 		headers = {
-					'authorization': "Basic " + base64string
-					'x-csrf-token': "Svz1-5jb0YSzAuu82EtZOQ=="
+					'authorization': "Basic " + base64string ,
+					'x-csrf-token': csrftoken
 				  }
 
 		conn.request("POST", qry_url, headers=headers)
