@@ -77,7 +77,7 @@ def makeQuery(req):
         return {}
 	
 def makeWebhookResult(data, req):
-    action = req.get("result").get("action")    
+    action = 'trigger-action'   
     if action == "find-status":		
         d = data.get('d')
         value = d.get('results')
@@ -101,9 +101,8 @@ def makeWebhookResult(data, req):
 	
     else:
 	speech = "Sorry, I did not understand you! Please try again"
-	
     print("Response:")
-    print(speech)
+    print(speech)   
 
     return {
         "speech": speech,
