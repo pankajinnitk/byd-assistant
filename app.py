@@ -47,7 +47,7 @@ def processRequest(req):
 					'authorization': "Basic " + base64string
 				  }
 
-		conn.request("GET", qry_url, headers=headers)
+		conn.request("POST", qry_url, headers=headers)
 		res = conn.getresponse()
 		result = res.read()
 		print("result")
