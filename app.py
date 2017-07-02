@@ -45,6 +45,7 @@ def processRequest(req):
 		base64string = base64.encodestring(('%s:%s' % ("odata_demo", "Welcome01")).encode()).decode().replace('\n', '')    
 		headers = {
 					'authorization': "Basic " + base64string
+					'x-csrf-token': "Svz1-5jb0YSzAuu82EtZOQ=="
 				  }
 
 		conn.request("POST", qry_url, headers=headers)
