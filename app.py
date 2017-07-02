@@ -43,7 +43,10 @@ def processRequest(req):
 		qry_url = baseurl + query
 		print(qry_url)
 		base64string = base64.encodestring(('%s:%s' % ("odata_demo", "Welcome01")).encode()).decode().replace('\n', '')
-		csrftoken = "Svz1-5jb0YSzAuu82EtZOQ=="
+		#csrftoken = "Svz1-5jb0YSzAuu82EtZOQ=="
+		client = requests.session()
+		client.get(url)
+		csrftoken = client.cookies['csrftoken']
 		headers = {
 					'authorization': "Basic " + base64string ,
 					'x-csrf-token': csrftoken
