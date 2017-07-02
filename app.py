@@ -77,35 +77,34 @@ def makeQuery(req):
         return {}
 	
 def makeWebhookResult(data, req):
-    action = 'trigger-action'   
-    if action == "find-status":		
-        d = data.get('d')
-        value = d.get('results')
-        print("json.results: ")
-        print(json.dumps(value, indent=4))
-        speech = "The status of Purchase Order ID " + str(value[0].get('PurchaseOrderID')) + \
-             	 " is " + value[0].get('PurchaseOrderLifeCycleStatusCodeText')
-    
-    elif action == "find-count":        
-        if int(data) > 1:
-            speech = "There are " + str(data) + " purchase orders in the system with " + \
-                      req.get("result").get("parameters").get("status") + " status"
-        elif int(data) == 1:
-            speech = "There is " + str(data) + " purchase order in the system with " + \
-                      req.get("result").get("parameters").get("status") + " status"
-        else:
-            speech = "There are no purchase orders in the system with " + \
-                      req.get("result").get("parameters").get("status") + " status"
-		
-    elif action == "trigger-action":
-	speech = "canceled"
-	
-    else:
-	speech = "Sorry, I did not understand you! Please try again"
-    print("Response:")
-    print(speech)   
+	action = 'trigger-action'
+	if action == "find-status":		
+		d = data.get('d')
+		value = d.get('results')
+		print("json.results: ")
+		print(json.dumps(value, indent=4))
+		speech = "The status of Purchase Order ID " + str(value[0].get('PurchaseOrderID')) + \
+			 " is " + value[0].get('PurchaseOrderLifeCycleStatusCodeText')
 
-    return {
+	elif action == "find-count":
+		if int(data) > 1:
+			speech = "There are " + str(data) + " purchase orders in the system with " + \
+				req.get("result").get("parameters").get("status") + " status"
+		elif int(data) == 1:
+			speech = "There is " + str(data) + " purchase order in the system with " + \
+				req.get("result").get("parameters").get("status") + " status"
+		else:
+			speech = "There are no purchase orders in the system with " + \
+				req.get("result").get("parameters").get("status") + " status"
+
+	elif action == "trigger-action":
+		speech = "canceled"
+	else:
+		speech = "Sorry, I did not understand you! Please try again"
+
+	print("Response:")
+	print(speech)
+	return {
         "speech": speech,
         "displayText": speech,
         # "data": data,
