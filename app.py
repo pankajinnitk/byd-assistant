@@ -72,7 +72,7 @@ def makeQuery(req):
     elif action == "find-count":               
         return "$count?%24filter=PurchaseOrderLifeCycleStatusCodeText%20eq%20'" + status + "'"
     elif action == "trigger-action":               
-        return "Cancel?%24ObjectID='00163E0E47D31ED6B18DE0A9A41045DC'"
+        return "Cancel?ObjectID='00163E0E47D31ED6B18DE0A9A41045DC'"
     else:
         return {}
 	
