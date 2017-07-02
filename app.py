@@ -98,6 +98,7 @@ def makeWebhookResult(data, req):
                       req.get("result").get("parameters").get("status") + " status"
     elif action == "trigger-action":
 	speech = "PO cancelled succesfully"
+	
     else:
 	speech = "Sorry, I did not understand you! Please try again"
 	
