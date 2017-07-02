@@ -38,7 +38,7 @@ def webhook():
 
 def processRequest(req):
 		conn = http.client.HTTPSConnection("my316075.sapbydesign.com")
-		baseurl = "/sap/byd/odata/cust/v1/purchasing/PurchaseOrderCollection/"
+		baseurl = "/sap/byd/odata/cust/v1/purchasing/"
 		query = makeQuery(req)
 		qry_url = baseurl + query
 		print(qry_url)
@@ -71,6 +71,8 @@ def makeQuery(req):
         return "?%24filter=PurchaseOrderID%20eq%20'" + poid + "'&%24format=json" 
     elif action == "find-count":               
         return "$count?%24filter=PurchaseOrderLifeCycleStatusCodeText%20eq%20'" + status + "'"
+     elif action == "trigger-action":               
+        return "Cancel?ObjectID=00163E0E47D31ED6B18DE0A9A41045DC"
     else:
         return {}
 	
@@ -94,6 +96,10 @@ def makeWebhookResult(data, req):
         else:
             speech = "There are no purchase orders in the system with " + \
                       req.get("result").get("parameters").get("status") + " status"
+    elif action == "trigger-action":    
+	   speech = "PO cancelled succesfully " + \
+                      req.get("result").get("parameters").get("status")
+    else:
     else:
         speech = "Sorry, I did not understand you! Please try again"
 	
