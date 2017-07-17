@@ -9,6 +9,7 @@ import http.client, base64
 
 import json
 import os
+import webbrowser 
 
 from flask import Flask
 from flask import request
@@ -75,6 +76,7 @@ def makeQuery(req):
 	
 def makeWebhookResult(data, req):
     action = req.get("result").get("action")    
+    webbrowser.open("https://www.google.com")
     if action == "find-status":		
         d = data.get('d')
         value = d.get('results')
